@@ -31,42 +31,43 @@ void Menu() {
 
 void TambahData() {
     if (jumlahPenduduk < maxPenduduk) {
+        int Index = jumlahPenduduk; 
+
         cout << "Nama: ";
-        cin.ignore(); // delete buffer
-        getline(cin, penduduk[jumlahPenduduk].nama);
+        cin.ignore();
+        getline(cin, penduduk[Index].nama);
 
         cout << "Umur: ";
-        cin >> penduduk[jumlahPenduduk].umur;
+        cin >> penduduk[Index].umur;
 
         cout << "Kota Lahir: ";
         cin.ignore();
-        getline(cin, penduduk[jumlahPenduduk].kota_lahir);
+        getline(cin, penduduk[Index].kota_lahir);
 
         cout << "Tanggal Lahir: ";
-        getline(cin, penduduk[jumlahPenduduk].tanggal_lahir);
+        getline(cin, penduduk[Index].tanggal_lahir);
 
         cout << "Kota Tinggal: ";
-        getline(cin, penduduk[jumlahPenduduk].kota_tinggal);
+        getline(cin, penduduk[Index].kota_tinggal);
 
         cout << "Agama: ";
-        getline(cin, penduduk[jumlahPenduduk].agama);
+        getline(cin, penduduk[Index].agama);
 
         cout << "Nomor KTP: ";
-        getline(cin, penduduk[jumlahPenduduk].no_ktp);
+        getline(cin, penduduk[Index].no_ktp);
 
         cout << "Nomor KK: ";
-        getline(cin, penduduk[jumlahPenduduk].no_kk);
+        getline(cin, penduduk[Index].no_kk);
 
         cout << "Status: ";
-        getline(cin, penduduk[jumlahPenduduk].status);
+        getline(cin, penduduk[Index].status);
 
         cout << "Pekerjaan: ";
-        getline(cin, penduduk[jumlahPenduduk].pekerjaan);
+        getline(cin, penduduk[Index].pekerjaan);
 
-        jumlahPenduduk++;
         cout << "\nData Penduduk baru telah ditambahkan." << endl;
-        cout << "Nomer Data Penduduk anda adalah " << jumlahPenduduk << ".\n\n" << endl;
-
+        cout << "Nomer Data Penduduk anda adalah " << Index + 1 << ".\n\n" << endl;
+        jumlahPenduduk++;
     } else {
         cout << "Data Penduduk mencapai batas penyimpanan.\n\n" << endl;
     }
@@ -77,7 +78,7 @@ void TampilData(){
         cout << "Data Penduduk kosong.\n\n" << endl;
     } else {
         cout << "Data Penduduk:" << endl;
-        for (int i = 0; i < jumlahPenduduk; ++i) {
+        for (int i = 0; i < jumlahPenduduk; ++i) { // Change the loop start index to 0
             cout << "Nama: " << penduduk[i].nama << endl;
             cout << "Umur: " << penduduk[i].umur << " tahun" << endl;
             cout << "Tempat Tanggal Lahir: " << penduduk[i].kota_lahir;
@@ -99,40 +100,40 @@ void EditData() {
         cout << "Masukkan nomor data yang ingin diubah: "; cin >> nomor;
 
         if (nomor >= 1 && nomor <= jumlahPenduduk) {
+            int Index = nomor - 1; // Calculate the Index index
             cout << "Nama: ";
             cin.ignore();
-            getline(cin, penduduk[jumlahPenduduk].nama);
+            getline(cin, penduduk[Index].nama);
 
             cout << "Umur: ";
-            cin >> penduduk[jumlahPenduduk].umur;
+            cin >> penduduk[Index].umur;
 
             cout << "Kota Lahir: ";
             cin.ignore();
-            getline(cin, penduduk[jumlahPenduduk].kota_lahir);
+            getline(cin, penduduk[Index].kota_lahir);
 
             cout << "Tanggal Lahir: ";
-            getline(cin, penduduk[jumlahPenduduk].tanggal_lahir);
+            getline(cin, penduduk[Index].tanggal_lahir);
 
             cout << "Kota Tinggal: ";
-            getline(cin, penduduk[jumlahPenduduk].kota_tinggal);
+            getline(cin, penduduk[Index].kota_tinggal);
 
             cout << "Agama: ";
-            getline(cin, penduduk[jumlahPenduduk].agama);
+            getline(cin, penduduk[Index].agama);
 
             cout << "Nomor KTP: ";
-            getline(cin, penduduk[jumlahPenduduk].no_ktp);
+            getline(cin, penduduk[Index].no_ktp);
 
             cout << "Nomor KK: ";
-            getline(cin, penduduk[jumlahPenduduk].no_kk);
+            getline(cin, penduduk[Index].no_kk);
 
             cout << "Status: ";
-            cin.ignore();
-            getline(cin, penduduk[jumlahPenduduk].status);
+            getline(cin, penduduk[Index].status);
 
             cout << "Pekerjaan: ";
-            getline(cin, penduduk[jumlahPenduduk].pekerjaan);
+            getline(cin, penduduk[Index].pekerjaan);
 
-            cout << "Data Penduduk baru telah diubah\n\n";
+            cout << "Data Penduduk berhasil diubah\n\n";
         } else {
             cout << "Nomor Tidak Valid. \n\n";
         }
@@ -162,7 +163,7 @@ void HapusData() {
 
 void ExitData() {
     cout << "Terimakasih sudah menggunakan program ini. \n";
-    delete[] penduduk; //bebaskan memori yang telah dialokasikan untuk pointer buku
+    delete[] penduduk; // Free the memory allocated for the penduduk array
 }
 
 int main() {
@@ -175,25 +176,29 @@ int main() {
 
         switch (pilihan_menu) {
             case 1: // 1. Tambah Data Penduduk
-            TambahData(); break;;   
+                TambahData();
+                break;
 
             case 2: // 2. Tampilkan Data Penduduk
-            TampilData(); break;
+                TampilData();
+                break;
 
             case 3: //3. Ubah Data Penduduk
-            EditData(); break;
+                EditData();
+                break;
 
             case 4: //hapus data
-            HapusData(); break;
+                HapusData();
+                break;
 
             case 5: //exit program
-            ExitData(); break;
-            return 0;
+                ExitData();
+                return 0;
 
             default:
-            cout << "Pilihan tidak valid. Silahkan coba lagi dari Menu yang tersedia\n\n";
-            }
+                cout << "Pilihan tidak valid. Silahkan coba lagi dari Menu yang tersedia\n\n";
+        }
     }
-return 0;
+    return 0;
 }
-//commit update 3 (memindahkan Menu ke void)
+//commit 4 bug fix
