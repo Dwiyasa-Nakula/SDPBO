@@ -78,7 +78,7 @@ void TampilData(){
         cout << "Data Penduduk kosong.\n\n" << endl;
     } else {
         cout << "Data Penduduk:" << endl;
-        for (int i = 0; i < jumlahPenduduk; ++i) { // Change the loop start index to 0
+        for (int i = 0; i < jumlahPenduduk; ++i) { 
             cout << "Nama: " << penduduk[i].nama << endl;
             cout << "Umur: " << penduduk[i].umur << " tahun" << endl;
             cout << "Tempat Tanggal Lahir: " << penduduk[i].kota_lahir;
@@ -100,7 +100,7 @@ void EditData() {
         cout << "Masukkan nomor data yang ingin diubah: "; cin >> nomor;
 
         if (nomor >= 1 && nomor <= jumlahPenduduk) {
-            int Index = nomor - 1; // Calculate the Index index
+            int Index = nomor - 1; 
             cout << "Nama: ";
             cin.ignore();
             getline(cin, penduduk[Index].nama);
@@ -170,7 +170,7 @@ int main() {
     int pilihan_menu;
     penduduk = new Penduduk[maxPenduduk];
 
-    while (true) { // loop menu
+    while (true) { 
         Menu();
         cin >> pilihan_menu;
 
@@ -201,4 +201,5 @@ int main() {
     }
     return 0;
 }
+
 //commit 4 bug fix
