@@ -67,14 +67,15 @@ int main() {
                     getline(cin, penduduk[jumlahPenduduk].no_kk);
 
                     cout << "Status: ";
-                    cin.ignore();
                     getline(cin, penduduk[jumlahPenduduk].status);
 
                     cout << "Pekerjaan: ";
                     getline(cin, penduduk[jumlahPenduduk].pekerjaan);
 
                     jumlahPenduduk++;
-                    cout << "Data Penduduk baru telah ditambahkan.\n\n" << endl;
+                    cout << "\nData Penduduk baru telah ditambahkan." << endl;
+                    cout << "Nomer Data Penduduk anda adalah " << jumlahPenduduk << ".\n\n" << endl;
+        
                 } else {
                     cout << "Data Penduduk mencapai batas penyimpanan.\n\n" << endl;
                 }
